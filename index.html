@@ -8,13 +8,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f0f2f5;
+            background: #f4f6f9;
             margin: 0;
             padding: 0;
         }
 
         header {
-            background: #0057b8;
+            background: #1a237e;
             color: white;
             padding: 20px;
             text-align: center;
@@ -22,70 +22,76 @@
 
         .container {
             width: 90%;
-            max-width: 900px;
             margin: 30px auto;
-        }
-
-        .kandidat-container {
             display: flex;
-            gap: 20px;
+            justify-content: space-around;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
-        .kandidat {
+        .card {
             background: white;
-            width: 260px;
-            padding: 15px;
+            width: 300px;
+            padding: 20px;
+            margin: 15px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        .kandidat img {
-            width: 100%;
-            border-radius: 10px;
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
         }
 
-        .kandidat h3 {
-            margin: 10px 0 5px;
-        }
-
-        .kandidat p {
-            font-size: 14px;
-            color: #444;
-        }
-
-        .btn-vote {
-            margin-top: 12px;
-            background: #0057b8;
-            color: white;
+        .btn {
             padding: 10px 20px;
+            background: #3949ab;
+            color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #5c6bc0;
         }
 
-        .btn-vote:hover {
-            background: #003f88;
-        }
-
-        footer {
-            text-align: center;
+        /* Bagian hasil perbandingan */
+        .results {
+            width: 90%;
+            background: white;
+            margin: 40px auto;
             padding: 20px;
-            margin-top: 30px;
-            background: #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chart-bar {
+            height: 20px;
+            background: #3949ab;
+            border-radius: 5px;
         }
     </style>
 
-    <script>
-        function vote(nama) {
-            alert("Anda memilih: " + nama + "\nTerima kasih sudah melakukan voting!");
-        }
-    </script>
-
 </head>
-
 <body>
 
 <header>
@@ -94,22 +100,92 @@
 </header>
 
 <div class="container">
-    <h2 style="text-align:center;">Pilih Kandidat Ketua OSIS</h2>
 
-    <div class="kandidat-container">
+    <!-- Kandidat 1 -->
+    <div class="card">
+        <img src="https://via.placeholder.com/120">
+        <h3>Ahmad Pratama</h3>
+        <p>Visi: Membangun OSIS yang kreatif, aktif, dan berintegritas.</p>
+        <button class="btn" onclick="pilih('ahmad')">Pilih</button>
+    </div>
 
-        <!-- Kandidat 1 -->
-        <div class="kandidat">
-            <img src="https://via.placeholder.com/250x160?text=Kandidat+1" alt="Kandidat 1">
-            <h3>1. Ahmad Ramadhan</h3>
-            <p>Visi: Membentuk OSIS yang kreatif, inovatif, dan peduli lingkungan.</p>
-            <button class="btn-vote" onclick="vote('Ahmad Ramadhan')">Pilih</button>
-        </div>
+    <!-- Kandidat 2 -->
+    <div class="card">
+        <img src="https://via.placeholder.com/120">
+        <h3>Bella Anindya</h3>
+        <p>Visi: Menjadikan OSIS sebagai wadah prestasi dan inovasi siswa.</p>
+        <button class="btn" onclick="pilih('bella')">Pilih</button>
+    </div>
 
-        <!-- Kandidat 2 -->
-        <div class="kandidat">
-            <img src="https://via.placeholder.com/250x160?text=Kandidat+2" alt="Kandidat 2">
-            <h3>2. Siti Nur Aisyah</h3>
-            <p>Visi: Menjadikan OSIS sebagai wadah pengembangan bakat dan prestasi siswa.</p>
-            <button class="btn-vote" onclick="vote('Siti Nur Aisyah')">Pilih</button>
-        </div>
+    <!-- Kandidat 3 -->
+    <div class="card">
+        <img src="https://via.placeholder.com/120">
+        <h3>Candra Wijaya</h3>
+        <p>Visi: Mengembangkan lingkungan sekolah yang disiplin dan harmonis.</p>
+        <button class="btn" onclick="pilih('candra')">Pilih</button>
+    </div>
+
+</div>
+
+
+<!-- Bagian Perbandingan Suara -->
+<div class="results">
+    <h2>📊 Perbandingan Hasil Pemilihan</h2>
+
+    <table>
+        <tr>
+            <th>Kandidat</th>
+            <th>Jumlah Suara</th>
+            <th>Grafik</th>
+        </tr>
+        <tr>
+            <td>Ahmad Pratama</td>
+            <td id="s-ahmad">0</td>
+            <td><div id="c-ahmad" class="chart-bar" style="width: 0%;"></div></td>
+        </tr>
+        <tr>
+            <td>Bella Anindya</td>
+            <td id="s-bella">0</td>
+            <td><div id="c-bella" class="chart-bar" style="width: 0%;"></div></td>
+        </tr>
+        <tr>
+            <td>Candra Wijaya</td>
+            <td id="s-candra">0</td>
+            <td><div id="c-candra" class="chart-bar" style="width: 0%;"></div></td>
+        </tr>
+    </table>
+</div>
+
+
+<script>
+    let suara = {
+        ahmad: 0,
+        bella: 0,
+        candra: 0
+    };
+
+    function pilih(nama) {
+        suara[nama]++;
+        alert("Terima kasih! Anda memilih " + nama.toUpperCase());
+
+        updateGrafik();
+    }
+
+    function updateGrafik() {
+        let total = suara.ahmad + suara.bella + suara.candra;
+        if (total === 0) total = 1; // menghindari pembagian 0
+
+        // memperbarui tampilan angka
+        document.getElementById("s-ahmad").innerText = suara.ahmad;
+        document.getElementById("s-bella").innerText = suara.bella;
+        document.getElementById("s-candra").innerText = suara.candra;
+
+        // update grafik batang (persentase)
+        document.getElementById("c-ahmad").style.width = (suara.ahmad / total * 100) + "%";
+        document.getElementById("c-bella").style.width = (suara.bella / total * 100) + "%";
+        document.getElementById("c-candra").style.width = (suara.candra / total * 100) + "%";
+    }
+</script>
+
+</body>
+</html>
