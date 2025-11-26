@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Voting Ketua OSIS SMKN 1 Ampelgading</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #0057b8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .kandidat-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .kandidat {
+            background: white;
+            width: 260px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .kandidat img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .kandidat h3 {
+            margin: 10px 0 5px;
+        }
+
+        .kandidat p {
+            font-size: 14px;
+            color: #444;
+        }
+
+        .btn-vote {
+            margin-top: 12px;
+            background: #0057b8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-vote:hover {
+            background: #003f88;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: #ddd;
+        }
+    </style>
+
+    <script>
+        function vote(nama) {
+            alert("Anda memilih: " + nama + "\nTerima kasih sudah melakukan voting!");
+        }
+    </script>
+
+</head>
+
+<body>
+
+<header>
+    <h1>E-Voting Ketua OSIS</h1>
+    <h2>SMKN 1 Ampelgading</h2>
+</header>
+
+<div class="container">
+    <h2 style="text-align:center;">Pilih Kandidat Ketua OSIS</h2>
+
+    <div class="kandidat-container">
+
+        <!-- Kandidat 1 -->
+        <div class="kandidat">
+            <img src="https://via.placeholder.com/250x160?text=Kandidat+1" alt="Kandidat 1">
+            <h3>1. Ahmad Ramadhan</h3>
+            <p>Visi: Membentuk OSIS yang kreatif, inovatif, dan peduli lingkungan.</p>
+            <button class="btn-vote" onclick="vote('Ahmad Ramadhan')">Pilih</button>
+        </div>
+
+        <!-- Kandidat 2 -->
+        <div class="kandidat">
+            <img src="https://via.placeholder.com/250x160?text=Kandidat+2" alt="Kandidat 2">
+            <h3>2. Siti Nur Aisyah</h3>
+            <p>Visi: Menjadikan OSIS sebagai wadah pengembangan bakat dan prestasi siswa.</p>
+            <button class="btn-vote" onclick="vote('Siti Nur Aisyah')">Pilih</button>
+        </div>
